@@ -3,6 +3,15 @@
 <img style="vertical-align:middle" width="450" height="200" src="https://github.com/kngrg/rusBeIR/blob/main/images/rusBeIR_logo.png" />
 </h1>
 
+<h4 align="center">
+  <a href="https://arxiv.org/abs/2504.12879v1">Paper</a> |
+  <a href="#installation">Installation</a> |
+  <a href="#examples">Examples</a> |
+  <a href="#available-datasets">Datasets</a> |
+  <a href="https://huggingface.co/collections/kaengreg/rusbeir-66e28cb06e3e074be55ac0f3">Hugging Face</a>
+</h4>
+
+
 RusBEIR is a Russian benchmark inspired by [BEIR](https://github.com/beir-cellar/beir), designed for zero-shot evaluation of Information Retrieval (IR) models. Adhering to the principles of BEIR, it offers a robust and diverse evaluation framework, enabling the assessment of IR models across a wide range of tasks and domains in the Russian language.
 The datasets in the RusBEIR benchmark consist of available open-source datasets, datasets that have been translated from English, and newly created datasets.
 
@@ -11,12 +20,12 @@ NDCG@10 was choosen as a main metric, results could be found [here](https://docs
 
 
 Additional results for [MAP@10](https://docs.google.com/spreadsheets/d/19jUZigy-AolNOOhT0EzNggiRoEcvfqL7HRpq0bwHqXc/edit#gid=1808748240) and [Recall@10](https://docs.google.com/spreadsheets/d/19jUZigy-AolNOOhT0EzNggiRoEcvfqL7HRpq0bwHqXc/edit#gid=1398424942) .
-## Installation 
+## Installation
 ``` python
 !git clone https://github.com/kngrg/rusBeIR.git
 ``` 
 
-##  Available Datasets
+## Available Datasets
 
 | Source               | Task                          | Dataset                  | Origin                 | Relevancy | Train   | Dev   | Test   | Corpus    | Avg. Word Lengths (D/Q) |
 |----------------------|-------------------------------|--------------------------|------------------------|-----------|---------|-------|--------|-----------|--------------------------|
