@@ -1,7 +1,7 @@
 from rusBeIR.beir.datasets.data_loader_hf import HFDataLoader
-from rusBeIR.beir.retrieval.search.lexical import BM25Search as BM25
+from rusBeIR.beir.retrieval.search.base import BaseSearch
 from rusBeIR.beir.retrieval.evaluation import EvaluateRetrieval
-from rusBeIR.retrieval.models.HFTransformers import HFTransformers
+from rusBeIR.retrieval.models.dense.DenseHFModels import DenseHFModels
 from tqdm import tqdm
 import json
 from pathlib import Path
@@ -94,12 +94,10 @@ class DatasetEvaluator:
 
             corpus, queries, _ = HFDataLoader(hf_repo=args[0], hf_repo_qrels=args[1], streaming=False, keep_in_memory=False, text_type=text_type).load(split=args[2])
 
-            if isinstance(self.model, BM25):
-                index_name = dataset_name
-                self.model = BM25(index_name=index_name, hostname=self.model.config['hostname'], initialize=True)
+            if isinstance(self.model, BaseSearch):
                 retriever = EvaluateRetrieval(retriever=self.model, k_values=self.k_values)
                 results = retriever.retrieve(corpus, queries)
-            elif isinstance(self.model, HFTransformers):
+            elif isinstance(self.model, DenseHFModels):
                 results = self.model.retrieve(queries, corpus)
 
             with out_file.open('w', encoding='utf-8') as f:
