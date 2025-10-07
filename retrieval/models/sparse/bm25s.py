@@ -4,8 +4,11 @@ import re
 from typing import Dict, List
 
 class BM25s(BaseSearch):
-    def __init__(self):
-        self.bm25 = bm25s.BM25()
+    def __init__(self, method: str, k1: float = None, b: float = None):
+        if k1 is not None and b is not None:
+            self.bm25 = bm25s.BM25(method=method, k1=k1, b=b)
+        else:
+            self.bm25 = bm25s.BM25(method=method)
         self.doc_ids: List[str] = []       
         self.doc_id_to_index: Dict[str, int] = {}  
         self.indexed = False                 
